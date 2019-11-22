@@ -14,7 +14,7 @@
                 </p>
                 <ul class="menu-list">
                     <li>
-                        <a  href="{{route('account')}}">Pengaturan Akun Pengguna</a>
+                        <a  href="{{route('account.index')}}">Pengaturan Akun Pengguna</a>
                     </li>
                 </ul>
                 <p class="menu-label">
@@ -30,15 +30,15 @@
                     <li>
                         <a href="">Artikel</a>
                         <ul>
-                            <li><a href="">Tambah Artikel</a></li>
-                        <li><a href="{{ route('artikel') }}">Lihat Artikel</a></li>
+                            <li><a href="{{ route('artikel.create') }}">Tambah Artikel</a></li>
+                        <li><a href="{{ route('artikel.index') }}">Lihat Artikel</a></li>
                         </ul>
                     </li>
                     <li>
                         <a href="">Event Islami</a>
                         <ul>
-                            <li><a href="">Tambah Event</a></li>
-                            <li><a href="">Lihat Event</a></li>
+                        <li><a href="{{ route('event.create') }}">Tambah Event</a></li>
+                        <li><a href="{{ route('event.index') }}">Lihat Event</a></li>
                         </ul>
                     </li>
                 </ul>

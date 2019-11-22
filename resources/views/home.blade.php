@@ -10,11 +10,11 @@
                     <li><a class="is-active">Dashboard</a></li>
                 </ul>
                 <p class="menu-label">
-                    <a>Akun</a>
+                    Akun
                 </p>
                 <ul class="menu-list">
                     <li>
-                        <a href="{{ route('account') }}">Pengaturan Akun Pengguna</a>
+                        <a href="{{ route('account.index') }}">Pengaturan Akun</a>
                     </li>
                 </ul>
                 <p class="menu-label">
@@ -30,15 +30,15 @@
                     <li>
                         <a href="">Artikel</a>
                         <ul>
-                            <li><a href="">Tambah Artikel</a></li>
-                            <li><a href="">Lihat Artikel</a></li>
+                            <li><a href="{{ route('artikel.create') }}">Tambah Artikel</a></li>
+                            <li><a href="{{ route('artikel.index') }}">Lihat Artikel</a></li>
                         </ul>
                     </li>
                     <li>
                         <a href="">Event Islami</a>
                         <ul>
-                            <li><a href="">Tambah Event</a></li>
-                            <li><a href="">Lihat Event</a></li>
+                        <li><a href="{{ route('event.create') }}">Tambah Event</a></li>
+                        <li><a href=" {{ route('event.index') }} ">Lihat Event</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -47,10 +47,8 @@
         <div class="column is-9">
             <!-- <nav class="breadcrumb" aria-label="breadcrumbs">
                 <ul>
-                    <li><a href="../">Bulma</a></li>
-                    <li><a href="../">Templates</a></li>
-                    <li><a href="../">Examples</a></li>
-                    <li class="is-active"><a href="#" aria-current="page">Admin</a></li>
+                    <li class=""><a>General</a></li>
+                    <li class="is-active"><a href="#" aria-current="page">Dasboard</a></li>
                 </ul>
             </nav> -->
             <section class="hero is-info welcome is-small">
@@ -70,7 +68,7 @@
                     <div class="tile is-parent">
                         <article class="tile is-child box">
                             <p class="title">{{ $user }}</p>
-                            <p class="subtitle">Akun Pendekar</p>
+                            <p class="subtitle">Akun</p>
                         </article>
                     </div>
                     <div class="tile is-parent">
@@ -141,17 +139,20 @@
                             <div class="content">
                                 <table class="table is-fullwidth is-striped">
                                     <tbody>
+                                        @foreach ($events->reverse() as $item )
                                         <tr>
-                                            <td width="5%"><i class="fa fa-bell-o"></i></td>
-                                            <td>Lorum ipsum dolem aire</td>
-                                            <td class="level-right"><a class="button is-small is-primary" href="#">Action</a></td>
-                                        </tr>
+                                                <td width="5%"><i class="fa fa-bell-o"></i></td>
+                                        <td>{{ $item->judul }}</td>
+                                                <td class="level-right"><a class="button is-small is-primary" href="#">Action</a></td>
+                                            </tr>
+                                        @endforeach
+
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                         <footer class="card-footer">
-                            <a href="#" class="card-footer-item">View All</a>
+                        <a href="{{ route('event.index') }}" class="card-footer-item">View All</a>
                         </footer>
                     </div>
                     <!--  -->

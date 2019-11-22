@@ -19,7 +19,8 @@ class ArtikelController extends Controller
     public function index()
     {
         //
-        return view('artikel');
+        $artikel = Artikel::all();
+        return view('artikel\lihat', ['artikel' => $artikel]);
     }
 
     /**
@@ -30,6 +31,8 @@ class ArtikelController extends Controller
     public function create()
     {
         //
+        $artikel = Artikel::all();
+        return view('artikel.create', ['artikel' => $artikel]);
     }
 
     /**
@@ -41,6 +44,16 @@ class ArtikelController extends Controller
     public function store(Request $request)
     {
         //
+        $new_artikel = new Artikel;
+        $new_artikel->judul = $request->get('judul');
+        $new_artikel->article = $request->get('article');
+
+        if ($request->file('gambar')) {
+            $gambar = $request->file('gambar')->store('artikel', 'public');
+            $new_artikel->gambar = $gambar;
+        }
+        $new_artikel->save();
+        return redirect()->route('artikel.store')->with('status', 'Artikel Berhasil di Tambahkan');
     }
 
     /**
@@ -60,9 +73,11 @@ class ArtikelController extends Controller
      * @param  \App\Artikel  $artikel
      * @return \Illuminate\Http\Response
      */
-    public function edit(Artikel $artikel)
+    public function edit($id)
     {
         //
+        $artikel_edit = Artikel::findOrFail($id);
+        return view('artikel.edit', ['artikel' => $artikel_edit]);
     }
 
     /**
@@ -83,8 +98,12 @@ class ArtikelController extends Controller
      * @param  \App\Artikel  $artikel
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Artikel $artikel)
+    public function destroy($id)
     {
         //
+        $artikel_delete = Artikel::findOrFail($id);
+        $artikel_delete->delete();
+
+        return redirect()->route('artikel.index')->with('status', 'Artikel Berhasil di hapus');
     }
 }

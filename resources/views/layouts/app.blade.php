@@ -27,11 +27,11 @@
 
 <body>
     <div id="app">
-        <nav class="navbar is-white" role="navigation" aria-label="main navigation">
+        <nav class="navbar is-white " role="navigation" aria-label="main navigation">
             <div class="container">
                 <div class="navbar-brand">
                     <a class="navbar-item -brand-text" href="{{ route('home') }}">
-                        <h2 class="title is-4">Mushlih.</h2>
+                        <h2 class="title is-5"><b>Mushlih.</b></h2>
                     </a>
 
                     <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">

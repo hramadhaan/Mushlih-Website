@@ -88,5 +88,9 @@ class AccountController extends Controller
     public function destroy($id)
     {
         //
+        $account_delete = User::findOrFail($id);
+        $account_delete->delete();
+
+        return redirect()->route('account.index')->with('status', 'Account Berhasil di hapus');
     }
 }

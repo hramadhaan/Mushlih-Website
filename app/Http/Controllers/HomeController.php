@@ -29,8 +29,9 @@ class HomeController extends Controller
     {
         $user = User::count();
         $event = Event::count();
+        $events = Event::all();
         $konsultasi = Konsultasi::count();
         $artikel = Artikel::count();
-        return view('home', compact('user','event','konsultasi','artikel'));
+        return view('home', compact('user', 'event', 'konsultasi', 'artikel'), ['events' => $events]);
     }
 }

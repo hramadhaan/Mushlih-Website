@@ -1,7 +1,7 @@
 @extends('layouts.app') @section('content')
 <div class="container">
     <div class="columns">
-        <div class="column is-3 ">
+        <div class="column is-3">
             <aside class="menu is-hidden-mobile">
                 <p class="menu-label">
                     General
@@ -14,7 +14,7 @@
                 </p>
                 <ul class="menu-list">
                     <li>
-                        <a href="{{route('account.index')}}" class="is-active">Pengaturan Akun Pengguna</a>
+                        <a href="{{route('account.index')}}">Pengaturan Akun Pengguna</a>
                     </li>
                 </ul>
                 <p class="menu-label">
@@ -31,13 +31,13 @@
                         <a href="">Artikel</a>
                         <ul>
                             <li><a href="{{ route('artikel.create') }}">Tambah Artikel</a></li>
-                            <li><a href="{{ route('artikel.index') }}">Lihat Artikel</a></li>
+                            <li><a class="is-active" href="{{ route('artikel.index') }}">Lihat Artikel</a></li>
                         </ul>
                     </li>
                     <li>
                         <a href="">Event Islami</a>
                         <ul>
-                            <li><a href="{{route('event.create')}}">Tambah Event</a></li>
+                            <li><a href="{{ route('event.create') }}">Tambah Event</a></li>
                         <li><a href="{{ route('event.index') }}">Lihat Event</a></li>
                         </ul>
                     </li>
@@ -57,29 +57,36 @@
                     </div>
                 </div>
             </section>
-            <section class="info-tiles">
+            <br>
+            <section class="hero is-small">
+                {{-- KONTEN --}}
                 <table class="table is-fullwidth is-hoverable">
                     <thead>
                         <tr class="">
                             <th>No.</th>
-                            <th>Nama</th>
-                            <th>Email</th>
+                            <th>Judul</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @php $no = 1 @endphp
-                        @foreach ($account as $item)
+                        @php $no = 1; @endphp
+                        @foreach ($artikel->reverse() as $item)
                         <tr>
                             <th>{{ $no++ }}</th>
-                            <td>{{ $item->name }}</td>
-                            <td>{{ $item->email }}</td>
+                            <td>{{ $item->judul }}</td>
                             <td>
-                            <form action="{{ route('account.destroy',[$item->id]) }}" method="POST">
-                                    @csrf
-                                    <input type="hidden" name="_method" value="DELETE">
-                                    <input type="submit" value="Delete" class="button is-danger is-small">
-                                </form>
+                                    <div class="field is-grouped">
+                                        <div class="control">
+                                                <a href="{{ route('artikel.edit',[$item->id]) }}" class="button is-primary is-small">Detail</a>
+                                        </div>
+                                        <div class="control">
+                                                <form action="{{ route('artikel.destroy',[$item->id]) }}" method="POST">
+                                                        @csrf
+                                                        <input type="hidden" name="_method" value="DELETE">
+                                                        <input type="submit" value="Delete" class="button is-danger is-small">
+                                                    </form>
+                                        </div>
+                                    </div>
                             </td>
                         </tr>
                         @endforeach
@@ -89,5 +96,4 @@
         </div>
     </div>
 </div>
-<script async type="text/javascript" src="{{asset('js/bulma.js')}}"></script>
 @endsection

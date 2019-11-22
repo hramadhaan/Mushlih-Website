@@ -1,4 +1,6 @@
-@extends('layouts.app') @section('content')
+@extends('layouts.app') @section('content') @error('email')
+<div class="notification is-danger">E-Mail atau Password Salah !</div>
+@enderror
 
 <div class="column is-4 is-offset-4">
     <div class="box">
@@ -7,14 +9,14 @@
             <div class="field">
                 <label class="label">Email</label>
                 <div class="control">
-                    <input type="email" name="email" id="email" class="input @error('email') si-danger @enderror" value="{{ old('email') }}" required="required" autocomplete="email" autofocus>
+                    <input type="email" name="email" id="email" class="input @error('email') is-danger @enderror" value="{{ old('email') }}" required="required" autocomplete="email" autofocus>
                 </div>
             </div>
 
             <div class="field">
                 <label class="label">Password</label>
                 <div class="control">
-                    <input type="password" name="password" id="password" class="input @error('password') si-danger @enderror" value="{{ old('password') }}" required="required" autocomplete="email">
+                    <input type="password" name="password" id="password" class="input @error('password') is-danger @enderror" value="{{ old('password') }}" required="required" autocomplete="email">
                 </div>
             </div>
 
