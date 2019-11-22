@@ -9,7 +9,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Muslim Apps | Aplikasi yang Ngebantu Kamu Untuk Ibadah</title>
+    <title>Mushlih Apps | Aplikasi yang Ngebantu Kamu Untuk Ibadah</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/bulma.js') }}" defer></script>
@@ -31,7 +31,7 @@
             <div class="container">
                 <div class="navbar-brand">
                     <a class="navbar-item -brand-text" href="{{ route('home') }}">
-                        <h2 class="title is-4">Pendekar.</h2>
+                        <h2 class="title is-4">Mushlih.</h2>
                     </a>
 
                     <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
